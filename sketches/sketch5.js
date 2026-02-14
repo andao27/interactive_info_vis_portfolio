@@ -2,7 +2,7 @@
 // Interactive Stacked Bar Chart showing Property Crime Dominance
 // Loads data directly from SPD CSV file
 
-const sk5_sketch = (p) => {
+registerSketch('sk5', function(p) {
   let crimeData = [];
   let rawData;
   let hoveredBar = null;
@@ -24,7 +24,7 @@ const sk5_sketch = (p) => {
   };
 
   // Layout constants
-  const margin = { top: 120, right: 80, bottom: 60, left: 200 };
+  const margin = { top: 180, right: 80, bottom: 60, left: 200 };
   let chartWidth, chartHeight;
   const barHeight = 28;
   const barPadding = 8;
@@ -36,11 +36,12 @@ const sk5_sketch = (p) => {
   p.preload = function() {
     // Load the CSV file
     // Make sure this path points to where you put the CSV in your repo
-    rawData = p.loadTable('SPD_Crime_Data__2008-Present_20260128_2_.csv', 'csv', 'header');
+    rawData = p.loadTable('SPD_Crime_Data__2008-Present_20260128(2).csv', 'csv', 'header');
   };
 
   p.setup = function() {
     let canvas = p.createCanvas(1080, 1350);
+    canvas.style('margin-top', '25px');
     canvas.parent('sketch-container-sk5');
     
     // Process the loaded data
@@ -406,4 +407,4 @@ const sk5_sketch = (p) => {
   function easeOutCubic(t) {
     return 1 - Math.pow(1 - t, 3);
   }
-};
+});
